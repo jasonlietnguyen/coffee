@@ -1,0 +1,63 @@
+<% include partials/header %>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-sm-3">
+    <h1 class="text-center display-3">Coffee Review</h1>
+      <form action="/coffeeshop" method="POST">
+        <!--Name-->
+        <div class="form-group">
+          <input class="form-control" type="text" name="name" placeholder="Coffee Shop">
+        </div>
+        <!--Adress-->
+        <div class="form-group">
+          <input class="form-control" type="text" name="address" placeholder="Address">
+        </div>
+         <!--Phone-->
+        <div class="form-group">
+          <input class="form-control" type="text" name="phone" placeholder="Phone Number">
+        </div>
+        <div class="row">
+          <div class="col">
+            <!--Start-->
+            <div class="form-group">
+              <select class="form-control" name="star">
+                <option value="1">1 Star</option>
+                <option value="2">2 Star</option>
+                <option value="3">3 Star</option>
+                <option value="4">4 Star</option>
+                <option value="5">5 Star</option>
+              </select>
+            </div>
+          </div>
+          <div class="col">
+            <!--Price-->
+            <div class="form-group">
+              <select class="form-control" name="price">
+                <option value="1">1 Price Range</option>
+                <option value="2">2 Price Range</option>
+                <option value="3">3 Price Range</option>
+                <option value="4">4 Price Range</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <!--Image-->
+        <div class="form-group">
+          <input class="form-control" type="text" name="img" placeholder="Image Url">
+        </div>
+        <!--Description-->
+        <div class="form-group">
+          <input class="form-control" type="text" name="description" placeholder="Description">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-lg btn-primary btn-block" style="cursor: pointer;">Submit!</button>
+        </div>
+      </form>
+      <a href="/coffeeshop">Go Back</a>
+      
+    </div>
+  </div>
+
+<% include partials/footer %>

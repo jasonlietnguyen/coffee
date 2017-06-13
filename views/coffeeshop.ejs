@@ -1,0 +1,36 @@
+<% include partials/header %>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-3" style="margin: 10px auto;">Welcome to Coffee Review</h1>
+    <p class="lead">World best coffee review site!!!</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/coffeeshop/new" role="button" >Add Coffee Shop</a>
+    </p>
+  </div>
+
+<div class="card-columns">
+  <% coffeeshop.forEach(function(shop){ %>
+  <div class="card">
+    <img class="card-img-top" src="<%= shop.img %>" alt="<%= shop.name %>" width="100%"><br><br>
+    <div class="container">
+      <p class="text-right" style="color: #0097a7"><i class="fa fa-phone-square" aria-hidden="true" ></i> <%= shop.phone %></p>
+      <% for(var i = 0; i <= shop.price; i++){ %>
+        <i class="fa fa-1x fa-usd" aria-hidden="true" style="color: #4caf50; float:left"></i>
+      <% } %>
+      <% for(var i = 0; i <= shop.star; i++){ %>
+        <i class="fa fa-1x fa-star" aria-hidden="true" style="color: #ffa726; float:right"></i>
+      <% } %>
+      </div>
+    <div class="card-block">
+      <h1 class="text-center" style="font-weight:200; margin: 5px"><%= shop.name %></h1>
+      <p class="text-center" style="color: #0097a7 "><%= shop.address %></p>
+      <p class="text-center"><%= shop.description %></p>
+      <a class="btn btn-primary btn-block" href="/" role="button" style="background-color: #00bcd4; border: none">See Full Description</a>
+    </div>
+  </div>
+  <% }) %>
+</div>
+</div>
+
+<% include partials/footer %>
