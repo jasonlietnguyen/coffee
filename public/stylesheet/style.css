@@ -1,0 +1,40 @@
+h1,h2,h3,h4,h5,h6,p,li{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+.card, .card-img-top, .btn, .jumbotron{
+  border-radius: 0;
+}
+
+/*CoffeeShop*/
+.title{
+  font-weight: 200;
+  text-align: center;
+  font-size: 80px;
+  margin-top: 0;
+}
+.add-btn{
+  margin: 10px;
+  padding: 20px 30px;
+  text-align: center;
+  border: 1px solid #0097a7;
+  display: inline-block;
+  color: #0097a7;
+}
+.add-btn:hover{
+  color: white;
+  background-color: #0097a7;
+}
+.fa-coffee{
+  text-align: center;
+  display: block;
+  color: #ffa726;
+}
+
+/*Form*/
+.submit-btn{
+  text-align: center;
+  display: inline-block;
+  background-color: #0097a7;
+  color: white;
+}

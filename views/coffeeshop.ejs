@@ -1,14 +1,15 @@
 <% include partials/header %>
 
 <div class="container">
-  <div class="jumbotron">
-    <h1 class="display-3" style="margin: 10px auto;">Welcome to Coffee Review</h1>
-    <p class="lead">World best coffee review site!!!</p>
-    <p class="lead">
-      <a class="btn btn-primary btn-lg" href="/coffeeshop/new" role="button" >Add Coffee Shop</a>
+    <br>
+    <i class="fa fa-3x fa-coffee" aria-hidden="true"></i>
+    <h1 class="title" style="margin: 10px auto;">Welcome to Coffee Review</h1>
+    <h4 class="text-center">World best coffee review site!!!</h4>
+    <p class="text-center">
+      <a class="btn btn-lg add-btn" href="/coffeeshop/new" role="button" >Add Coffee Shop</a>
     </p>
-  </div>
-
+    <br>
+    
 <div class="card-columns">
   <% coffeeshop.forEach(function(shop){ %>
   <div class="card">
