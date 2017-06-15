@@ -30,6 +30,14 @@ h1,h2,h3,h4,h5,h6,p,li{
   display: block;
   color: #ffa726;
 }
+.fa-usd{
+  color: #4caf50; 
+  float:left
+}
+.fa-star{
+  color: #ffa726; 
+  float:right
+}
 
 /*Form*/
 .submit-btn{
