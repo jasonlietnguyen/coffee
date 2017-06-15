@@ -43,7 +43,7 @@ app.get("/coffeeshop", function (req, res) {
 // Form
 app.post("/coffeeshop", function (req, res) {
   var phone = req.body.phone
-  var newPhone = '(' + phone[0] + phone[1] + phone[2] + ') ' + phone[3] + phone[4] + phone[5] + '-' + phone[6] + phone[7] + phone[8]
+  var newPhone = '(' + phone[0] + phone[1] + phone[2] + ') ' + phone[3] + phone[4] + phone[5] + '-' + phone[6] + phone[7] + phone[8] + phone[9]
   CoffeeShop.create({
     name: req.body.name,
     img: req.body.img,

@@ -10,13 +10,13 @@ h1,h2,h3,h4,h5,h6,p,li{
 .title{
   font-weight: 200;
   text-align: center;
-  font-size: 80px;
+  font-size: 60px;
   margin-top: 0;
   margin: 10px auto;
 }
 .add-btn{
   margin: 10px;
-  padding: 20px 30px;
+  padding: 10px 30px;
   text-align: center;
   border: 1px solid #0097a7;
   display: inline-block;
