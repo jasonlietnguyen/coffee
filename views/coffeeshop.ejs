@@ -3,7 +3,7 @@
 <div class="container">
     <br>
     <i class="fa fa-3x fa-coffee" aria-hidden="true"></i>
-    <h1 class="title" style="margin: 10px auto;">Welcome to Coffee Review</h1>
+    <h1 class="title">Welcome to Coffee Review</h1>
     <h4 class="text-center">World best coffee review site!!!</h4>
     <p class="text-center">
       <a class="btn btn-lg add-btn" href="/coffeeshop/new" role="button" >Add Coffee Shop</a>
@@ -27,7 +27,7 @@
           <h1 class="text-center" style="font-weight:200; margin: 5px"><%= shop.name %></h1>
           <p class="text-center" style="color: #0097a7 "><%= shop.address %></p>
           <p class="text-center"><%= shop.description %></p>
-          <a class="btn btn-primary btn-block" href="/" role="button" style="background-color: #00bcd4; border: none">See Full Description</a>
+          <a class="btn btn-primary btn-block" href="/coffeeshop/<%= shop._id %>" role="button" style="background-color: #00bcd4; border: none">See Full Description</a>
         </div>
       </div>
       <% }) %>

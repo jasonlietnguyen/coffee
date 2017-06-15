@@ -3,10 +3,10 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-8 offset-md-2 col-sm-12">
+    <div class="col-md-6 offset-md-3 col-sm-12">
     <br>
     <i class="fa fa-3x fa-coffee" aria-hidden="true"></i>
-    <h1 class="text-center title">Coffee Review</h1>
+    <h1 class="title">Coffee Review</h1>
       <form action="/coffeeshop" method="POST">
         <!--Name-->
         <div class="form-group">
@@ -18,18 +18,18 @@
         </div>
          <!--Phone-->
         <div class="form-group">
-          <input class="form-control" type="text" name="phone" placeholder="Phone Number">
+          <input class="form-control" type="number" name="phone" placeholder="Phone Number" maxlength="10" size="10">
         </div>
         <div class="row">
           <div class="col">
             <!--Start-->
             <div class="form-group">
               <select class="form-control" name="star">
-                <option value="1">1 Star</option>
-                <option value="2">2 Star</option>
-                <option value="3">3 Star</option>
-                <option value="4">4 Star</option>
-                <option value="5">5 Star</option>
+                <option value="1">1 Bad</option>
+                <option value="2">2 Fair</option>
+                <option value="3">3 Average</option>
+                <option value="4">4 Good</option>
+                <option value="5">5 Excellent</option>
               </select>
             </div>
           </div>
@@ -37,10 +37,10 @@
             <!--Price-->
             <div class="form-group">
               <select class="form-control" name="price">
-                <option value="1">1 Price Range</option>
-                <option value="2">2 Price Range</option>
-                <option value="3">3 Price Range</option>
-                <option value="4">4 Price Range</option>
+                <option value="1">Inexpensive</option>
+                <option value="2">Average</option>
+                <option value="3">Costly</option>
+                <option value="4">Expensive</option>
               </select>
             </div>
           </div>

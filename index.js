@@ -64,6 +64,16 @@ app.get("/coffeeshop/new", function (req, res) {
   res.render("coffeeshopform")
 })
 
+// Show single coffee shop
+app.get("/coffeeshop/:id", function (req, res) {
+  CoffeeShop.findById(req.params.id, function(err, req){
+    if(err){
+      console.log(err)
+    }else{
+      res.render("singleshop", {coffeeshop: req})
+    }
+  })
+})
 
 app.get("*", function (req, res) {
   res.send("404: Sorry Page not found")

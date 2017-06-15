@@ -2,8 +2,8 @@ h1,h2,h3,h4,h5,h6,p,li{
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
 }
-.card, .card-img-top, .btn, .jumbotron{
-  border-radius: 0;
+.card, .card-img-top, .btn, .jumbotron, input{
+  border-radius: 0 !important;
 }
 
 /*CoffeeShop*/
@@ -12,6 +12,7 @@ h1,h2,h3,h4,h5,h6,p,li{
   text-align: center;
   font-size: 80px;
   margin-top: 0;
+  margin: 10px auto;
 }
 .add-btn{
   margin: 10px;
