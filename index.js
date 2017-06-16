@@ -4,7 +4,7 @@ var express = require("express"),
   mongoose = require("mongoose"),
   port = 4000,
   CoffeeShop = require("./models/coffeeshop"),
-  Comments = require("./models/comments"),
+  Comments = require("./models/comment"),
   seedDB = require("./seeds")
 
 
@@ -56,14 +56,19 @@ app.get("/coffeeshop/new", function (req, res) {
 
 // Show single coffee shop
 app.get("/coffeeshop/:id", function (req, res) {
-  CoffeeShop.findById(req.params.id, function(err, req){
-    if(err){
+  CoffeeShop.findById(req.params.id).populate("comments").exec(function (err, req) {
+    if (err) {
       console.log(err)
-    }else{
-      res.render("singleshop", {coffeeshop: req})
+    } else {
+      console.log(req)
+      res.render("singleshop", { coffeeshop: req })
     }
   })
 })
+
+
+
+
 
 app.get("*", function (req, res) {
   res.send("404: Sorry Page not found")
