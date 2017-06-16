@@ -2,24 +2,14 @@ var express = require("express"),
   app = express(),
   bodyParser = require("body-parser"),
   mongoose = require("mongoose"),
-  port = 4000
+  port = 4000,
+  CoffeeShop = require("./models/coffeeshop"),
+  Comments = require("./models/comments"),
+  seedDB = require("./seeds")
 
 
-
+seedDB()
 mongoose.connect("mongodb://coffeereview:reviewcoffee@ds127802.mlab.com:27802/coffee-review");
-
-// Schema
-var CoffeeshopSchema = new mongoose.Schema({
-  name: String,
-  img: String,
-  phone: String,
-  address: String,
-  description: String,
-  star: Number,
-  price: Number
-})
-
-var CoffeeShop = mongoose.model("CoffeeShop", CoffeeshopSchema)
 
 
 
