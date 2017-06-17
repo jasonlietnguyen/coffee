@@ -1,0 +1,28 @@
+<% include ../partials/header %>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 col-sm-12">
+    <br>
+    <i class="fa fa-3x fa-coffee" aria-hidden="true"></i>
+    <h1 class="title">Add New Comment to <%= coffeeshop.name %> </h1>
+      <form action="/coffeeshop/<%= coffeeshop._id%>/comments" method="POST">
+        <!--Text-->
+        <div class="form-group">
+          <input class="form-control" type="text" name="comment[text]" placeholder="Text">
+        </div>
+        <!--Author-->
+        <div class="form-group">
+          <input class="form-control" type="text" name="comment[author]" placeholder="Author">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-lg btn-block submit-btn" style="cursor: pointer;">Submit!</button>
+        </div>
+      </form>
+      <a href="/coffeeshop">Go Back</a>
+      
+    </div>
+  </div>
+
+<% include ../partials/footer %>

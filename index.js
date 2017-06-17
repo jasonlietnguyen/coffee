@@ -1,78 +1,48 @@
 var express = require("express"),
-  app = express(),
-  bodyParser = require("body-parser"),
-  mongoose = require("mongoose"),
-  port = 4000,
-  CoffeeShop = require("./models/coffeeshop"),
-  Comments = require("./models/comment"),
-  seedDB = require("./seeds")
+    app = express(),
+    bodyParser = require("body-parser"),
+    mongoose = require("mongoose"),
+    passport = require("passport"),
+    LocalStrategy = require("passport-local"),
+    port = 4000,
+    CoffeeShop = require("./models/coffeeshop"),
+    Comments = require("./models/comment"),
+    User = require("./models/user"),
+    seedDB = require("./seeds")
+
+var commentRoutes =  require("./routes/comment"),
+    coffeeShopRoutes = require("./routes/coffeeshop"),
+    indexRoutes = require("./routes/index")
+
+// seedDB()
+
+// Passport Configeration
+app.use(require("express-session")({
+  secret: "ths is my secret",
+  resave: false,
+  saveUninitialized: false
+}))
+app.use(passport.initialize());
+app.use(passport.session())
+passport.use(new LocalStrategy(User.authenticate()))
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
 
 
-seedDB()
+
 mongoose.connect("mongodb://coffeereview:reviewcoffee@ds127802.mlab.com:27802/coffee-review");
-
-
-
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set("view engine", "ejs")
-
-
-
-// All CoffeeShop
-app.get("/coffeeshop", function (req, res) {
-  CoffeeShop.find({}, function (err, req) {
-    if (err) {
-      console.log(err)
-    } else {
-      res.render("coffeeshop", { coffeeshop: req })
-    }
-  })
+app.use(function(req, res, next){
+  res.locals.currentUser = req.user;
+  next();
 })
 
-// Form
-app.post("/coffeeshop", function (req, res) {
-  var phone = req.body.phone
-  var newPhone = '(' + phone[0] + phone[1] + phone[2] + ') ' + phone[3] + phone[4] + phone[5] + '-' + phone[6] + phone[7] + phone[8] + phone[9]
-  CoffeeShop.create({
-    name: req.body.name,
-    img: req.body.img,
-    star: Number(req.body.star),
-    price: req.body.price,
-    phone: newPhone,
-    address: req.body.address,
-    description: req.body.description
-  }, function (err, req) {
-    if (err) {
-      console.log(err)
-    } else {
-      res.redirect("/coffeeshop")
-    }
-  })
-})
-app.get("/coffeeshop/new", function (req, res) {
-  res.render("coffeeshopform")
-})
+app.use(indexRoutes);
+app.use("/coffeeshop", coffeeShopRoutes);
+app.use("/coffeeshop/:id/comments", commentRoutes);
 
-// Show single coffee shop
-app.get("/coffeeshop/:id", function (req, res) {
-  CoffeeShop.findById(req.params.id).populate("comments").exec(function (err, req) {
-    if (err) {
-      console.log(err)
-    } else {
-      console.log(req)
-      res.render("singleshop", { coffeeshop: req })
-    }
-  })
-})
-
-
-
-
-
-app.get("*", function (req, res) {
-  res.send("404: Sorry Page not found")
-})
 
 app.listen(port, function (req, res) {
   console.log("Application is listening on port", port)

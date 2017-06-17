@@ -1,0 +1,13 @@
+<% include ../partials/header %>
+
+<%= coffeeshop.name %>
+<% coffeeshop.comments.forEach(function(comment){ %>
+<p>
+<strong><%= comment.author %></strong>-
+<%= comment.text %>
+</p>
+<% }) %>
+
+<a class="btn" href="/coffeeshop/<%= coffeeshop._id %>/comments/new">Add New Comment</a>
+
+<% include ../partials/footer %>

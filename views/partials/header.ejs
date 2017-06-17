@@ -17,3 +17,10 @@
   <title>Coffee Review</title>
 </head>
 <body>
+<% if(!currentUser){ %>
+<a href="/login">Log In</a>
+<a href="/register">Sign Up</a>
+<% }else{ %>
+<h4>Hello, <%= currentUser.username %></h4>
+<a href="/logout">Log Out</a>
+<% } %>

@@ -24,11 +24,10 @@ var data = [
 ]
 
 function seedDB() {
-  // CoffeeShop.remove({}, function (err) {
-  //   if (err) {
-  //     console.log(err)
-  //   }
-    console.log("remove CoffeShop")
+  CoffeeShop.remove({}, function (err) {
+    if (err) {
+      console.log(err)
+    }
   data.forEach(function (seed) {
     CoffeeShop.create(seed, function (err, data) {
       if (err) {
@@ -50,7 +49,7 @@ function seedDB() {
       }
     })
   })
-  // })
+  })
 }
 
 module.exports = seedDB;
