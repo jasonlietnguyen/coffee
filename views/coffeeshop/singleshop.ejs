@@ -1,13 +1,50 @@
+
+
 <% include ../partials/header %>
 
-<%= coffeeshop.name %>
+<div class="container">
+
+<div class="jumbotron">
+  <h1 class="display-1"><%= coffeeshop.name %></h1>
+</div>
+
+
+
 <% coffeeshop.comments.forEach(function(comment){ %>
 <p>
-<strong><%= comment.author %></strong>-
+<strong><%= comment.author.username %></strong>-
 <%= comment.text %>
 </p>
 <% }) %>
+<p>Submit by: <%= coffeeshop %></p>
 
 <a class="btn" href="/coffeeshop/<%= coffeeshop._id %>/comments/new">Add New Comment</a>
+<a class="btn" href="/coffeeshop/<%= coffeeshop._id %>/edit">Edit Coffee Shop</a>
 
+<form action="/coffeeshop/<%= coffeeshop._id%>?_method=DELETE" method="POST">
+<button type="submit">Delete</button>
+</form>
+
+
+
+
+
+</div>
+
+
+<style>
+.jumbotron{
+  background-image: url(<%= coffeeshop.img %>);
+  background-size: cover;
+}
+.display-1{
+  color: white;
+  font-size: 160px;
+  font-weight: 500;
+}
+h1{
+  margin: 100px 0 0;
+  padding: 50px 0 0;
+}
+</style>
 <% include ../partials/footer %>

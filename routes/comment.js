@@ -24,6 +24,9 @@ router.post("/", isLoggedIn, function (req, res) {
         if (err) {
           console.log(err)
         } else {
+          comment.author.id = req.user._id
+          comment.author.username = req.user.username
+          comment.save();
           coffeeshop.comments.push(comment)
           coffeeshop.save()
           res.redirect("/coffeeshop/" + req.params.id)

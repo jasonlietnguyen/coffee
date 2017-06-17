@@ -4,6 +4,7 @@ var express = require("express"),
     mongoose = require("mongoose"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
+    methodOveride = require("method-override"),
     port = 4000,
     CoffeeShop = require("./models/coffeeshop"),
     Comments = require("./models/comment"),
@@ -34,6 +35,7 @@ mongoose.connect("mongodb://coffeereview:reviewcoffee@ds127802.mlab.com:27802/co
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set("view engine", "ejs")
+app.use(methodOveride("_method"))
 app.use(function(req, res, next){
   res.locals.currentUser = req.user;
   next();

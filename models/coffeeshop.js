@@ -9,6 +9,13 @@ var coffeeshopSchema = new mongoose.Schema({
   description: String,
   star: Number,
   price: Number,
+  author: {
+    id:{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    },
+    username: String
+  },
   comments:[
     {
       type: mongoose.Schema.Types.ObjectId,

@@ -1,0 +1,65 @@
+<% include ../partials/header %>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 col-sm-12">
+    <br>
+    <i class="fa fa-3x fa-coffee" aria-hidden="true"></i>
+    <h1 class="title">Edit <%= coffeeshop.name %></h1>
+      <form action="/coffeeshop/<%= coffeeshop._id %>?_method=PUT" method="POST">
+        <!--Name-->
+        <div class="form-group">
+          <input class="form-control" type="text" name="coffeeshop[name]" value="<%= coffeeshop.name %>">
+        </div>
+        <!--Adress-->
+        <div class="form-group">
+          <input class="form-control" type="text" name="coffeeshop[address]" value="<%= coffeeshop.address %>">
+        </div>
+         <!--Phone-->
+        <div class="form-group">
+          <input class="form-control" type="text" name="coffeeshop[phone]" value="<%= coffeeshop.phone %>" maxlength="10" size="10">
+        </div>
+        <div class="row">
+          <div class="col">
+            <!--Start-->
+            <div class="form-group">
+              <select class="form-control" name="coffeeshop[star]" value="<%= coffeeshop.star %>">
+                <option value="1">1 Bad</option>
+                <option value="2">2 Fair</option>
+                <option value="3">3 Average</option>
+                <option value="4">4 Good</option>
+                <option value="5">5 Excellent</option>
+              </select>
+            </div>
+          </div>
+          <div class="col">
+            <!--Price-->
+            <div class="form-group">
+              <select class="form-control" name="coffeeshop[price]" value="<%= coffeeshop.price %>">
+                <option value="1">Inexpensive</option>
+                <option value="2">Average</option>
+                <option value="3">Costly</option>
+                <option value="4">Expensive</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <!--Image-->
+        <div class="form-group">
+          <input class="form-control" type="text" name="coffeeshop[img]" value="<%= coffeeshop.img %>">
+        </div>
+        <!--Description-->
+        <div class="form-group">
+          <input class="form-control" type="text" name="coffeeshop[description]" value="<%= coffeeshop.description %>">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-lg btn-block submit-btn" style="cursor: pointer;">Submit!</button>
+        </div>
+      </form>
+      <a href="/coffeeshop">Go Back</a>
+      
+    </div>
+  </div>
+
+<% include ../partials/footer %>
