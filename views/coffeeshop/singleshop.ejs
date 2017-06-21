@@ -1,50 +1,138 @@
-
-
 <% include ../partials/header %>
 
-<div class="container">
+  <div class="container">
 
-<div class="jumbotron">
-  <h1 class="display-1"><%= coffeeshop.name %></h1>
-</div>
+    <div class="jumbotron">
+      <h1 class="display-1">
+        <%= coffeeshop.name %>
+      </h1>
+      <h3 class="text-right"><i class="fa fa-user" aria-hidden="true"></i> | Posted By:
+        <%= coffeeshop.author.username %>
+      </h3>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h3 class="text-left" style="color: #0097a7"><i class="fa fa-phone-square" aria-hidden="true"></i>
+          <%= coffeeshop.phone %>
+        </h3>
+      </div>
+      <div class="col-md-6">
+        <h3 class="text-right" style="color: #0097a7 "><i class="fa fa-map-marker" aria-hidden="true"></i>
+          <%= coffeeshop.address %>
+        </h3>
+      </div>
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class="col-md-6">
+        <% for(var i = 0; i <= coffeeshop.price; i++){ %>
+          <i class="fa fa-1x fa-usd" aria-hidden="true"></i>
+          <% } %>
+      </div>
+      <div class="col-md-6">
+        <% for(var i = 0; i <= coffeeshop.star; i++){ %>
+          <i class="fa fa-1x fa-star" aria-hidden="true"></i>
+          <% } %>
+      </div>
+    </div>
+    <hr>
+
+    <p class="description">
+      <%= coffeeshop.description %>
+    </p>
+    <br>
+    <a class="btn submit-btn" href="/coffeeshop/<%= coffeeshop._id %>/comments/new"><i class="fa fa-plus" aria-hidden="true"></i> Add New Comment</a>
+    <br><br>
+    <div class="row">
+      <% coffeeshop.comments.forEach(function(comment){ %>
+        <div class="col-md-2 offset-md-2">
+          <p><i class="fa fa-comments" aria-hidden="true"></i>
+            <%= comment.author.username.toUpperCase() %>
+          </p>
+        </div>
+        <div class="col-md-6">
+          <p>
+            <%= comment.text %>
+          </p>
+          <hr>
+        </div>
+        <div class="col-md-2">
+          <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+            <a class="btn btn-sm btn-outline-warning inline" href="/coffeeshop/<%= coffeeshop._id %>/comments/<%= comment._id %>/edit">Edit</a>
+            <form class="inline" action="/coffeeshop/<%= coffeeshop._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+              <input type="submit" class="btn btn-sm btn-outline-danger" value="Delete">
+            </form>
+            <% } %>
+              <br>
+        </div>
+        <% }) %>
+        <br>
+    </div>
+          <% if(currentUser && coffeeshop.author.id.equals(currentUser._id)){ %>
+    <hr class="dark-hr">
+            <a class="btn btn-sm btn-warning inline" href="/coffeeshop/<%= coffeeshop._id %>/edit">Edit Coffee Shop</a> 
+            <form action="/coffeeshop/<%= coffeeshop._id%>?_method=DELETE" method="POST" class="inline">
+               &nbsp;<input class="btn btn-sm btn-danger" value="Delete Coffee Shop!!!">
+            </form>
+            <% } %>
+            <br><br>
 
 
-
-<% coffeeshop.comments.forEach(function(comment){ %>
-<p>
-<strong><%= comment.author.username %></strong>-
-<%= comment.text %>
-</p>
-<% }) %>
-<p>Submit by: <%= coffeeshop %></p>
-
-<a class="btn" href="/coffeeshop/<%= coffeeshop._id %>/comments/new">Add New Comment</a>
-<a class="btn" href="/coffeeshop/<%= coffeeshop._id %>/edit">Edit Coffee Shop</a>
-
-<form action="/coffeeshop/<%= coffeeshop._id%>?_method=DELETE" method="POST">
-<button type="submit">Delete</button>
-</form>
+  </div>
 
 
+  <style>
+    .jumbotron {
+      background-image: url(<%= coffeeshop.img %>);
+      background-size: cover;
+    }
 
+    .display-1 {
+      color: white;
+      font-size: 160px;
+      font-weight: 500;
+    }
 
+    h1 {
+      margin: 100px 0 0;
+      padding: 50px 0 0;
+    }
 
-</div>
+    h3 {
+      color: white;
+      padding-bottom: 0;
+      margin-bottom: 0;
+      font-weight: 200;
+    }
 
+    .submit-btn {
+      display: flex;
+      display: block;
+      align-items: center;
+    }
 
-<style>
-.jumbotron{
-  background-image: url(<%= coffeeshop.img %>);
-  background-size: cover;
-}
-.display-1{
-  color: white;
-  font-size: 160px;
-  font-weight: 500;
-}
-h1{
-  margin: 100px 0 0;
-  padding: 50px 0 0;
-}
-</style>
-<% include ../partials/footer %>
+    .fa-star,
+    .fa-usd {
+      font-size: 80px;
+    }
+
+    .inline {
+      display: inline;
+    }
+
+    .description {
+      font-size: 30px;
+      color: #333;
+    }
+
+    .dark-hr{
+      border: 1px solid #555;
+    }
+    .btn{
+      cursor: pointer;
+    }
+  </style>
+
+  <% include ../partials/footer %>

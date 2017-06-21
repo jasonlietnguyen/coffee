@@ -1,10 +1,11 @@
 var express = require("express"),
-    router = express.Router({mergeParams: true}),
-    CoffeeShop = require("../models/coffeeshop"),
-    Comments = require("../models/comment")
+  router = express.Router({ mergeParams: true }),
+  CoffeeShop = require("../models/coffeeshop"),
+  Comments = require("../models/comment"),
+  MiddleWare = require("../middleware")
 
 
-router.get("/new", isLoggedIn, function (req, res) {
+router.get("/new", MiddleWare.isLoggedIn, function (req, res) {
   CoffeeShop.findById(req.params.id, function (err, req) {
     if (err) {
       console.log(err)
@@ -14,7 +15,7 @@ router.get("/new", isLoggedIn, function (req, res) {
   })
 })
 
-router.post("/", isLoggedIn, function (req, res) {
+router.post("/", MiddleWare.isLoggedIn, function (req, res) {
   CoffeeShop.findById(req.params.id, function (err, coffeeshop) {
     if (err) {
       console.log(err)
@@ -36,11 +37,39 @@ router.post("/", isLoggedIn, function (req, res) {
   })
 })
 
-function isLoggedIn(req, res, next){
-  if(req.isAuthenticated()){
-    return next();
-  }
-  res.redirect("/login")
-}
+router.get("/:comment_id/edit", MiddleWare.isLoggedIn, MiddleWare.checkCommentOwnership, function (req, res) {
+  Comments.findById(req.params.comment_id, function (err, comment) {
+    if (err) {
+      res.redirect("back")
+    } else {
+      res.render("comment/edit", { coffeeshop_id: req.params.id, comment: comment })
+    }
+  })
+})
+
+
+router.put("/:comment_id", MiddleWare.isLoggedIn, MiddleWare.checkCommentOwnership, function(req, res){
+  Comments.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, comment){
+    if(err){
+      res.redirect("back")
+    }else{
+      res.redirect("/coffeeshop/" + req.params.id)
+    }
+  })
+})
+
+router.delete("/:comment_id", MiddleWare.isLoggedIn, MiddleWare.checkCommentOwnership, function(req, res){
+  Comments.findByIdAndRemove(req.params.comment_id, function(err, comment){
+    if(err){
+      res.redirect("back")
+    }else{
+      res.redirect("/coffeeshop/" + req.params.id)
+    }
+  })
+})
+
+
+
+
 
 module.exports = router;
