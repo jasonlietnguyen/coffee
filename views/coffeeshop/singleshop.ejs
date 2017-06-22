@@ -60,9 +60,9 @@
         </div>
         <div class="col-md-2">
           <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
-            <a class="btn btn-sm btn-outline-warning inline" href="/coffeeshop/<%= coffeeshop._id %>/comments/<%= comment._id %>/edit">Edit</a>
+            <a class="btn btn-sm btn-warning inline" href="/coffeeshop/<%= coffeeshop._id %>/comments/<%= comment._id %>/edit">Edit</a>
             <form class="inline" action="/coffeeshop/<%= coffeeshop._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-              <input type="submit" class="btn btn-sm btn-outline-danger" value="Delete">
+              <input type="submit" class="btn btn-sm btn-danger" value="Delete">
             </form>
             <% } %>
               <br>
@@ -72,9 +72,9 @@
     </div>
           <% if(currentUser && coffeeshop.author.id.equals(currentUser._id)){ %>
     <hr class="dark-hr">
-            <a class="btn btn-sm btn-warning inline" href="/coffeeshop/<%= coffeeshop._id %>/edit">Edit Coffee Shop</a> 
+            <a class="btn btn-sm btn-outline-warning inline" href="/coffeeshop/<%= coffeeshop._id %>/edit">Edit Coffee Shop</a> 
             <form action="/coffeeshop/<%= coffeeshop._id%>?_method=DELETE" method="POST" class="inline">
-               &nbsp;<input class="btn btn-sm btn-danger" value="Delete Coffee Shop!!!">
+               &nbsp;<input class="btn btn-sm btn-outline-danger" value="Delete Coffee Shop!!!">
             </form>
             <% } %>
             <br><br>
