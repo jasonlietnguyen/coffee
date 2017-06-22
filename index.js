@@ -5,7 +5,7 @@ var express = require("express"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
     methodOveride = require("method-override"),
-    port = '4000',
+    port = process.env.PORT,
     CoffeeShop = require("./models/coffeeshop"),
     Comments = require("./models/comment"),
     User = require("./models/user"),
@@ -47,7 +47,7 @@ app.use("/coffeeshop/:id/comments", commentRoutes);
 
 
 app.listen(port, function (req, res) {
-  console.log("Application is listening on port", port)
+  console.log("Application is listening")
 })
 
 
