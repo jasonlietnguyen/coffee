@@ -5,7 +5,7 @@ var express = require("express"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
     methodOveride = require("method-override"),
-    port = process.env.PORT,
+    port = process.env.PORT || 4000,
     CoffeeShop = require("./models/coffeeshop"),
     Comments = require("./models/comment"),
     User = require("./models/user"),
@@ -28,7 +28,6 @@ app.use(passport.session())
 passport.use(new LocalStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
-
 
 
 mongoose.connect("mongodb://coffeereview:reviewcoffee@ds127802.mlab.com:27802/coffee-review");

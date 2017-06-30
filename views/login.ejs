@@ -1,11 +1,23 @@
 <% include partials/header %>
 
-<h1>Login</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 col-sm-12"><br><br>
+        <i class="fa fa-3x fa-coffee" aria-hidden="true"></i>
+        <h1 class="title">Login</h1><br>
+        <form action="/login" method="POST">
+          <div class="form-group">
+            <input type="text" name="username" placeholder="User Name" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" placeholder="Password" class="form-control">
+          </div>
+          <div class="form-group">
+            <button class="btn btn-lg btn-block submit-btn" type="submit" style="cursor: pointer">Login</button>
+          </div>
+        </form>
 
-<form action="/login" method="POST">
-  <input type="text" name="username" placeholder="User Name">
-  <input type="password" name="password" placeholder="Password">
-  <button type="submit">Login</button>
-</form>
-
-<% include partials/footer %>
+      </div>
+    </div>
+  </div>
+  <% include partials/footer %>

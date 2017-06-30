@@ -50,8 +50,4 @@ function isLoggedIn(req, res, next){
   res.redirect("/login")
 }
 
-// router.get("*", function (req, res) {
-//   res.send("404: Sorry Page not found")
-// })
-
 module.exports = router;

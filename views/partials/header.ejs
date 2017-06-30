@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,8 @@
   <!--FontAwesome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!--Bootstrap-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+    crossorigin="anonymous">
   <!--Google Fonts-->
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
   <!--Normalize-->
@@ -16,12 +18,15 @@
   <link rel="stylesheet" href="/stylesheet/style.css">
   <title>Coffee Review</title>
 </head>
+
 <body>
-<a href="/">HOME</a>
-<% if(!currentUser){ %>
-<a href="/login">Log In</a>
-<a href="/register">Sign Up</a>
-<% }else{ %>
-<h4>Hello, <%= currentUser.username %></h4>
-<a href="/logout">Log Out</a>
-<% } %>
+  <br>
+  <h5 class="text-center">
+    <a href="/" style="color: #333">HOME</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <% if(!currentUser){ %>
+      <a href="/login" style="color: #333">LOG IN</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="/register" style="color: #333">SIGN UP</a>&nbsp;&nbsp;
+      <% }else{ %>
+        <a href="/logout" style="color: #333">LOG OUT</a>
+        <% } %>
+  </h5>
